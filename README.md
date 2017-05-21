@@ -35,6 +35,7 @@ application and serves as the data source for the front-end applications.
 - Server [ExpressJS](http://expressjs.com/)
 - Logging with [morgan](https://github.com/expressjs/morgan)
 - Database [MongoDB](https://www.mongodb.com) with [mongoose](http://mongoosejs.com/) driver
+- Scripting Language [ES6](http://es6-features.org/#Constants) Javascript
 - Development using [nodemon](https://github.com/remy/nodemon),
   [babel](https://babeljs.io/), [eslint](http://eslint.org/)
 - Testing with [mocha](https://mochajs.org/) and [ShouldJS](https://shouldjs.github.io/)
@@ -61,16 +62,13 @@ For easy and fast handling use yarn:
 ``` bash
 # Install yarn package manager
 $ sudo npm install -g yarn
-# Install the operator
-$ yarn global add https://github.com/alinex/node-rest
+# Clone from github
+$ git clone https://github.com/alinex/node-rest
+# Install the modules
+$ yarn
 
 # Mongo DB
 $ sudo apt install mongodb
-
-# Clone from github
-$ git clone https://github.com/alinex/node-operator
-# Install the modules
-$ yarn
 ```
 
 Now you may run the development version with hot reloading or in the production
