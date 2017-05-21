@@ -24,9 +24,9 @@
   "contributors": [],
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "nodemon lib/server.js --exec 'yarn lint && babel-node --exec node_modules/.bin/babel-node'",
+    "dev": "nodemon lib/index.js --exec 'yarn lint && babel-node --exec node_modules/.bin/babel-node'",
     "build": "babel lib -d dist",
-    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "precommit": "npm run lint",
     "unit": "mocha --require babel-register test/mocha",
     "test": "yarn lint && yarn unit",
@@ -36,17 +36,20 @@
     "body-parser": "^1.17.2",
     "cross-env": "^5.0.0",
     "express": "^4.15.3",
+    "express-oauth-server": "^2.0.0-b1",
     "mongoose": "^4.10.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-register": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",
     "mocha": "^3.4.1",
+    "morgan": "^1.8.1",
     "nodemon": "^1.11.0",
+    "request": "^2.81.0",
     "should": "^11.2.1",
     "yarn": "^0.24.4"
   }

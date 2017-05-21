@@ -38,6 +38,9 @@ application and serves as the data source for the front-end applications.
 - Development using [nodemon](https://github.com/remy/nodemon),
   [babel](https://babeljs.io/), [eslint](http://eslint.org/), [mocha](https://mochajs.org/)
 
+Planned are also:
+- Security using [Passport] with [OAuth2](https://aaronparecki.com/oauth-2-simplified/)
+
 ## Usage
 
 **In the moment this is in heavy development and not really ready for productive use.**
@@ -47,52 +50,40 @@ the other and maybe also both on one server.
 
 ### Installation
 
+For production use the best way is to install through
+[IT Operator](https://github.com/alinex/node-operator).
+
+### Development
+
 For easy and fast handling use yarn:
 
 ``` bash
 # Install yarn package manager
 $ sudo npm install -g yarn
 # Install the operator
-$ yarn global add https://github.com/alinex/node-operator
+$ yarn global add https://github.com/alinex/node-rest
 
 # Mongo DB
 $ sudo apt install mongodb
-```
 
-Now you may start it:
-``` bash
-$ yarn control  # Start control server
-$ yarn rest     # Start rest server
-$ yarn start    # Start both servers
-```
-
-### Development
-
-For development you should clone from github and install:
-
-``` bash
-# Install yarn package manager
+# Clone from github
 $ git clone https://github.com/alinex/node-operator
 # Install the modules
 $ yarn
 ```
 
-Now you may run the development version with hot reloading:
+Now you may run the development version with hot reloading or in the production
+version:
 
 ``` bash
-# Start both server
-$ yarn dev
+# Use rest development server
+$ yarn test   # run the test suite
+$ yarn dev    # run with hot reload
+
+# create and start production server
+$ yarn build
+$ yarn start
 ```
-
-You may also run each of them individually in their modules.
-
-
-## Page Structure
-
-__Basic Pages__
-
-    /           System Start
-    /login      Login Page
 
 ## REST API
 
@@ -107,11 +98,11 @@ In general `GET` and `HEAD` are always the same but without values in `HEAD`.
 
 __General Scheme__
 
-    HEAD    /api/<group>/<object>/<access>  // check for existence
-    GET     /api/<group>/<object>/<access>  // get object(s)/<value>
-    POST    /api/<group>/<object>/<access>  // change object(s)
-    PUT     /api/<group>/<object>/<access>  // add/replace object(s)
-    DELETE  /api/<group>/<object>/<access>  // delete object(s)
+    HEAD    /api/<group>/<object>/<element>  // check for existence
+    GET     /api/<group>/<object>/<element>  // get object(s)/<value>
+    POST    /api/<group>/<object>/<element>  // change object(s)
+    PUT     /api/<group>/<object>/<element>  // add/replace object(s)
+    DELETE  /api/<group>/<object>/<element>  // delete object(s)
 
 
 Search for objects:
