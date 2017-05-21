@@ -36,7 +36,8 @@ application and serves as the data source for the front-end applications.
 - Logging with [morgan](https://github.com/expressjs/morgan)
 - Database [MongoDB](https://www.mongodb.com) with [mongoose](http://mongoosejs.com/) driver
 - Development using [nodemon](https://github.com/remy/nodemon),
-  [babel](https://babeljs.io/), [eslint](http://eslint.org/), [mocha](https://mochajs.org/)
+  [babel](https://babeljs.io/), [eslint](http://eslint.org/)
+- Testing wiht [mocha](https://mochajs.org/) and [ShouldJS](https://shouldjs.github.io/)
 
 Planned are also:
 - Security using [Passport] with [OAuth2](https://aaronparecki.com/oauth-2-simplified/)
