@@ -27,21 +27,24 @@
   https://img.shields.io/github/issues/alinex/node-rest.svg?maxAge=86400)](
   https://github.com/alinex/node-rest/issues)<!-- {.hidden-small} -->
 
+__Current State: Basic REST server working - code structure not final.__
+
 The REST Server is part of the [IT Operator](https://github.com/alinex/node-operator)
 application and serves as the data source for the front-end applications.
 
 ## Technologies
 
-- Server [ExpressJS](http://expressjs.com/)
+- Language [ES6](http://es6-features.org/#Constants) Javascript under [NodeJS](https://nodejs.org/en/)
+- Web server [ExpressJS](http://expressjs.com/)
 - Logging with [morgan](https://github.com/expressjs/morgan)
 - Database [MongoDB](https://www.mongodb.com) with [mongoose](http://mongoosejs.com/) driver
-- Scripting Language [ES6](http://es6-features.org/#Constants) Javascript
 - Development using [nodemon](https://github.com/remy/nodemon),
   [babel](https://babeljs.io/), [eslint](http://eslint.org/)
 - Testing with [mocha](https://mochajs.org/) and [ShouldJS](https://shouldjs.github.io/)
 
 Planned are also:
-- Security using [Passport] with [OAuth2](https://aaronparecki.com/oauth-2-simplified/)
+- Switch to Database [Redis](https://redis.io/) with [Node Redis](http://redis.js.org/) driver
+- Security using [Passport](http://passportjs.org/) with [OAuth2](https://aaronparecki.com/oauth-2-simplified/)
 
 ## Usage
 
