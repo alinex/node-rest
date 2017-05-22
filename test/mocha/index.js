@@ -2,15 +2,22 @@ import should from 'should'
 import shouldHttp from 'should-http'
 import request from 'request'
 
+import server from '../../src/server'
+
 // eslint-env node, mocha
 
-before(function() {
-  require('../../lib/server').default()
+before((cb) => {
+  server.init({ logging: null }) // no request logging needed
+  server.start(cb)
 })
 
-describe('rest server', function() {
-  it('should give name and version number', function(cb) {
-    request('http://localhost:1974', function(err, res, body) {
+after(() => {
+  server.stop()
+})
+
+describe('rest server', () => {
+  it('should give name and version number', (cb) => {
+    request('http://localhost:1974', (err, res, body) => {
       should.not.exist(err)
       res.should.have.status(200)
       res.should.be.json()

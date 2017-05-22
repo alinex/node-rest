@@ -4,46 +4,86 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
+import chalk from 'chalk'
 
 import api from './api'
 
-// Configuration
-const protocol = process.env.PROTOCOL || process.env.NODE_ENV === 'production' ? 'https' : 'http'
-const host = process.env.HOST || 'localhost'
-const port = process.env.PORT || 1974
 const production = process.env.NODE_ENV === 'production'
 
-// Setup express app
-const app = express()
-app.set('port', port)
 
-// Body parser, to access req.body
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+// DEFINE SERVER MANAGER
+// -----------------------------------------------------------------------------
 
-// Enable logging to stdout
-app.use(morgan(production ? 'combined' : 'tiny'))
+const server = {
+  // store current setting
+  setup: new Map(),
+  running: false,
 
-// Add API routes
-app.use(api)
+  // change setup
+  init (setup) {
+    if (server.setup.size) {
+      // eslint-disable-next-line no-console
+      console.log(chalk.grey('Server configuration will be changed...'))
+    }
+    Object.assign(server.setup, setup)
+    if (server.running) {
+      // eslint-disable-next-line no-console
+      console.warn('Server should be restarted for changes to take effect!')
+    }
+  },
 
-// Setup server
-var server = app // default http
-if (protocol === 'https') {
-  // Setup HTTPS
-  var https = require('https')
-  var fs = require('fs')
-  var options = {
-    key: fs.readFileSync('config/ssl/private.key'),
-    cert: fs.readFileSync('config/ssl/certificate.pem')
-  }
-  server = https.createServer(options, app)
+  // start server
+  start (cb) {
+    // Setup express app
+    let setup = server.setup
+    let app = express()
+    // Body parser, to access req.body
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(bodyParser.json())
+    // Enable logging to stdout
+    if (setup.logging) app.use(morgan(setup.logging))
+    // Add API routes
+    app.use(api)
+    // Setup new server instance
+    if (server.ssl) {
+      let https = require('https')
+      app = https.createServer(server.ssl, app)
+    }
+    // Start the server
+    let instance = app.listen(setup.port, setup.host, null, () => {
+      server.running = server.ssl ? app : instance
+      server.running.on ('close', () => {
+        // eslint-disable-next-line no-console
+        console.log('Server stopped.')
+      })
+      // eslint-disable-next-line no-console
+      console.log(`Server listening on ${setup.protocol}://${setup.host}:${setup.port}`)
+      if (cb) cb()
+    })
+  },
+
+  // stop server
+  stop: () => {
+    server.running.close()
+    server.running = false
+  },
+
+  // restart server
+  restart: (cb) => {
+    server.stop()
+    server.start(cb)
+  },
 }
 
 
-// Start server
-export default function() {
-  server.listen(port, host, null, () => {
-    console.log('Server listening on ' + protocol + '://' + host + ':' + port) // eslint-disable-line no-console
-  })
-}
+// INITIAL SETUP
+// -----------------------------------------------------------------------------
+
+server.init({
+  protocol: process.env.PROTOCOL || production ? 'https' : 'http',
+  host: process.env.HOST || 'localhost',
+  port: process.env.PORT || 1974,
+  logging: production ? 'combined' : 'dev'
+})
+
+export default server

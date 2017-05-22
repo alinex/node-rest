@@ -7,18 +7,18 @@ const router = Router()
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-  res.json({ message: 'Alinex REST Server V '  + process.env.npm_package_version })
+  res.json({ message: `Alinex REST Server V ${process.env.npm_package_version}` })
 })
 
 // Add Routes
 router.use('/bears', bear)
 //router.use('/access', access)
 
-router.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
+router.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   /* We log the error internaly */
   console.error('ERROR: ' + util.inspect(err).replace(/\s+/, ' ')) // eslint-disable-line no-console
 
-  var data = { statusCode: err.statusCode || 500, message: err.message || 'Internal Error' }
+  let data = { statusCode: err.statusCode || 500, message: err.message || 'Internal Error' }
 
   // add stack in development mode
   if (req.app.get('env') === 'development') {
