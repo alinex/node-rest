@@ -43,7 +43,8 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-register": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",

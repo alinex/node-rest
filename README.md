@@ -32,6 +32,7 @@ __Current State: Basic REST server working - code structure not final.__
 The REST Server is part of the [IT Operator](https://github.com/alinex/node-operator)
 application and serves as the data source for the front-end applications.
 
+
 ## Technologies
 
 - Language [ES6](http://es6-features.org/#Constants) Javascript under [NodeJS](https://nodejs.org/en/)
@@ -43,6 +44,7 @@ application and serves as the data source for the front-end applications.
   [babel](https://babeljs.io/), [eslint](http://eslint.org/)
 - Testing with [mocha](https://mochajs.org/) and [ShouldJS](https://shouldjs.github.io/)
 - Test Database [MongoDB](https://www.mongodb.com) with [mongoose](http://mongoosejs.com/) driver
+
 
 ## Usage
 
@@ -84,6 +86,19 @@ $ yarn dev    # run with hot reload
 $ yarn build
 $ yarn start
 ```
+
+### Configuration
+
+The server may be configured using the environment setting. First step is to use
+`NODE_ENV=production` (which is done on `yarn start`) changes the whole setting:
+- protocol will be HTTPS
+- logging will be set to Apache combined format
+
+But you may also set the following entries separately through environment settings:
+- `PROTOCOL` - should be `http` or `https`
+- `HOST` - hostname on which to listen to, use '0.0.0.0' for all IPs
+- `PORT` - port to listen on (defaults to 1974)
+
 
 ## REST API
 
@@ -186,6 +201,21 @@ __Groups__
     DELETE  /api/access/group/<string>         @admin         // remove group
     PUT     /api/access/group/<string>/member/<string>  @admin
     DELETE  /api/access/group/<string>/member/<string>  @admin
+
+
+## Module
+
+This server may also be used as module in another project. Therefore you should import
+and initialize it using:
+
+``` javascript
+import restInit from 'alinex-rest/dist/init'
+import RestServer from 'alinex-rest/dist/server'
+
+RestServer.init({ ... }) // configure server
+RestServer.start()
+.then(doSomething)
+```
 
 
 ## License

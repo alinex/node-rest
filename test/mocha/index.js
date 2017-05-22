@@ -8,7 +8,8 @@ import server from '../../src/server'
 
 before((cb) => {
   server.init({ logging: null }) // no request logging needed
-  server.start(cb)
+  server.start()
+  .then(cb)
 })
 
 after(() => {

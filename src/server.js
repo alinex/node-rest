@@ -33,32 +33,34 @@ const server = {
   },
 
   // start server
-  start (cb) {
-    // Setup express app
-    let setup = server.setup
-    let app = express()
-    // Body parser, to access req.body
-    app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(bodyParser.json())
-    // Enable logging to stdout
-    if (setup.logging) app.use(morgan(setup.logging))
-    // Add API routes
-    app.use(api)
-    // Setup new server instance
-    if (server.ssl) {
-      let https = require('https')
-      app = https.createServer(server.ssl, app)
-    }
-    // Start the server
-    let instance = app.listen(setup.port, setup.host, null, () => {
-      server.running = server.ssl ? app : instance
-      server.running.on ('close', () => {
+  start () {
+    return new Promise(cb => {
+      // Setup express app
+      let setup = server.setup
+      let app = express()
+      // Body parser, to access req.body
+      app.use(bodyParser.urlencoded({ extended: true }))
+      app.use(bodyParser.json())
+      // Enable logging to stdout
+      if (setup.logging) app.use(morgan(setup.logging))
+      // Add API routes
+      app.use(api)
+      // Setup new server instance
+      if (server.ssl) {
+        let https = require('https')
+        app = https.createServer(server.ssl, app)
+      }
+      // Start the server
+      let instance = app.listen(setup.port, setup.host, null, () => {
+        server.running = server.ssl ? app : instance
+        server.running.on ('close', () => {
+          // eslint-disable-next-line no-console
+          console.log('Server stopped.')
+        })
         // eslint-disable-next-line no-console
-        console.log('Server stopped.')
+        console.log(`Server listening on ${setup.protocol}://${setup.host}:${setup.port}`)
+        cb()
       })
-      // eslint-disable-next-line no-console
-      console.log(`Server listening on ${setup.protocol}://${setup.host}:${setup.port}`)
-      if (cb) cb()
     })
   },
 
@@ -69,9 +71,11 @@ const server = {
   },
 
   // restart server
-  restart: (cb) => {
-    server.stop()
-    server.start(cb)
+  restart: () => {
+    return new Promise(cb => {
+      server.stop()
+      server.start().then(cb)
+    })
   },
 }
 
