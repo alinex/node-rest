@@ -39,7 +39,8 @@ application and serves as the data source for the front-end applications.
 - Web server [ExpressJS](http://expressjs.com/)
 - Logging with [morgan](https://github.com/expressjs/morgan)
 - TODO Switch to Database [Redis](https://redis.io/) with [Node Redis](http://redis.js.org/) driver
-- TODO Security using [Passport](http://passportjs.org/) with [OAuth2](https://aaronparecki.com/oauth-2-simplified/)
+- TODO Security using [Passport](http://passportjs.org/) with  
+  [OAuth2](https://aaronparecki.com/oauth-2-simplified/)
 - Development using [nodemon](https://github.com/remy/nodemon),
   [babel](https://babeljs.io/), [eslint](http://eslint.org/)
 - Testing with [mocha](https://mochajs.org/) and [ShouldJS](https://shouldjs.github.io/)
