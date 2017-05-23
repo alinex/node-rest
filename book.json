@@ -8,7 +8,7 @@
   },
 
   "plugins": [
-    "todo", "mermaid-2", "plantuml",
+    "todo", "mermaid-gb3", "puml",
     "-highlight", "code-highlighter",
     "toggle-chapters", "navigator", "downloadpdf"
   ],
@@ -17,9 +17,6 @@
       "base": "https://www.gitbook.com/download/pdf/book/alinex/rest",
       "label": "Download PDF",
       "multilingual": false
-    },
-    "mermaid-2": {
-       "theme": "forest"
     }
   }
 }

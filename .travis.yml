@@ -5,15 +5,16 @@ node_js:
 #  - "7"  # devel from 2016-10
 #  - "8"  # LTS   from 2017-10 maintenance till 2019-12
 #  - "9"  # devel from 2017-10
-script: "npm run-script test-travis"
+os:
+  - linux
+  - osx
 
 # Additional services
 services:
   - mongodb
 
-# coveralls integration
-#after_success:
-#  - COVERALLS_SERVICE_NAME=travis-ci COVERALLS_REPO_TOKEN=kdLeun9GUXgeiLjRUk8Dos8VL3hkYafyv node_modules/.bin/builder test --coveralls
+# run with coveralls integration
+script: "npm run-script test-travis"
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 
 # Fix the c++ compiler on Ubuntu 14.04
