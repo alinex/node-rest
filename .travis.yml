@@ -7,6 +7,7 @@ node_js:
 #  - "9"  # devel from 2017-10
 script: "npm run-script test-travis"
 
+# Additional services
 services:
   - mongodb
 
