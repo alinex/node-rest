@@ -31,8 +31,12 @@ bower_components
 node_modules/
 jspm_packages/
 
-# Compiled code
-dist
+# Development folder
+doc
+book.json
+src
+test
+/.*
 
 # Runtime data
 local
