@@ -41,7 +41,7 @@
     "express": "^4.15.3",
     "express-oauth-server": "^2.0.0-b1",
     "mongoose": "^4.10.2",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -51,13 +51,13 @@
     "babel-register": "^6.24.1",
     "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
-    "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.4.1",
+    "eslint-plugin-import": "^2.3.0",
+    "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
     "nyc": "^10.3.2",
     "request": "^2.81.0",
     "should": "^11.2.1",
     "should-http": "^0.1.1",
-    "yarn": "^0.24.4"
+    "yarn": "^0.24.5"
   }
 }

@@ -4,19 +4,21 @@ import request from 'request'
 
 import server from '../../src/server'
 
-// eslint-env node, mocha
-
+// start server before tests
 before((cb) => {
   server.init({ logging: null }) // no request logging needed
   server.start()
   .then(cb)
 })
 
+// stop server after tests
 after(() => {
   server.stop()
 })
 
+// run the tests
 describe('rest server', () => {
+
   it('should give name and version number', (cb) => {
     request('http://localhost:1974', (err, res, body) => {
       should.not.exist(err)
@@ -28,4 +30,5 @@ describe('rest server', () => {
       cb()
     })
   })
+
 })
