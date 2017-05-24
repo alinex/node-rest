@@ -1,10 +1,7 @@
-// app/models/bear.js
+const mongoose = require('mongoose')
 
-var mongoose     = require('mongoose')
-var Schema       = mongoose.Schema
+const Schema = mongoose.Schema
 
-var BearSchema   = new Schema({
-  name: String
-})
+const BearSchema = new Schema({ name: String })
 
 module.exports = mongoose.model('Bear', BearSchema)

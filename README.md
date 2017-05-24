@@ -17,9 +17,15 @@
 [![latest version](
   https://img.shields.io/npm/l/alinex-rest.svg?maxAge=86400)](
   #license)<!-- {.hidden-small} -->
+[![Codacy Badge](
+  https://api.codacy.com/project/badge/Grade/d1c36b200a8b47ffb31a1eabd2522d9e)](
+  https://www.codacy.com/app/alinex/node-rest/dashboard)
 [![Travis status](
   https://img.shields.io/travis/alinex/node-rest.svg?maxAge=86400&label=develop)](
   https://travis-ci.org/alinex/node-rest)
+[![Coverage Status](
+  https://img.shields.io/coveralls/alinex/node-rest.svg?maxAge=86400)](
+  https://coveralls.io/r/alinex/node-rest)
 [![Gemnasium status](
   https://img.shields.io/gemnasium/alinex/node-rest.svg?maxAge=86400)](
   https://gemnasium.com/alinex/node-rest)
