@@ -24,13 +24,13 @@
   "contributors": [],
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "nodemon src/index.js --exec 'yarn lint; babel-node --exec node_modules/.bin/babel-node'",
+    "dev": "nodemon src/index.js --exec 'npm run lint; babel-node --exec node_modules/.bin/babel-node'",
     "build": "babel src -d dist",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "precommit": "npm run lint",
     "prepublish": "npm run build",
     "unit": "nyc --require babel-core/register mocha test/mocha",
-    "test": "yarn lint && yarn unit",
+    "test": "npm run lint && npm run unit",
     "test-travis": "nyc --reporter=lcov --require babel-core/register mocha test/mocha",
     "lint": "eslint src --ext .js"
   },
@@ -65,7 +65,6 @@
     "nyc": "^10.3.2",
     "request": "^2.81.0",
     "should": "^11.2.1",
-    "should-http": "^0.1.1",
-    "yarn": "^0.24.5"
+    "should-http": "^0.1.1"
   }
 }
