@@ -9,7 +9,6 @@
 
   "plugins": [
     "todo", "mermaid-gb3", "puml",
-    "-highlight", "code-highlighter",
     "toggle-chapters", "navigator", "downloadpdf"
   ],
   "pluginsConfig": {
