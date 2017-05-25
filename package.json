@@ -65,5 +65,8 @@
     "request": "^2.81.0",
     "should": "^11.2.1",
     "should-http": "^0.1.1"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
