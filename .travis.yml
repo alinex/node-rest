@@ -7,7 +7,7 @@ node_js:
 #  - "9"  # devel from 2017-10
 os:
   - linux
-  - osx
+#  - osx   # not possible because of mongodb service
 
 # Additional services
 services:

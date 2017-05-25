@@ -28,7 +28,7 @@ const server = {
   running: false,
 
   // change setup
-  init (setup) {
+  init: (setup) => {
     if (server.setup.size) {
       // eslint-disable-next-line no-console
       console.log(chalk.grey('Server configuration will be changed...'))
@@ -41,36 +41,34 @@ const server = {
   },
 
   // start server
-  start () {
-    return new Promise(cb => {
-      // Setup express app
-      let setup = server.setup
-      let app = express()
-      // Body parser, to access req.body
-      app.use(bodyParser.urlencoded({ extended: true }))
-      app.use(bodyParser.json())
-      // Enable logging to stdout
-      if (setup.logging) app.use(morgan(setup.logging))
-      // Add API routes
-      app.use(api)
-      // Setup new server instance
-      if (server.ssl) {
-        let https = require('https')
-        app = https.createServer(server.ssl, app)
-      }
-      // Start the server
-      let instance = app.listen(setup.port, setup.host, null, () => {
-        server.running = server.ssl ? app : instance
-        server.running.on ('close', () => {
-          // eslint-disable-next-line no-console
-          console.log('Server stopped.')
-        })
+  start: () => new Promise((cb) => {
+    // Setup express app
+    const setup = server.setup
+    let app = express()
+    // Body parser, to access req.body
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(bodyParser.json())
+    // Enable logging to stdout
+    if (setup.logging) app.use(morgan(setup.logging))
+    // Add API routes
+    app.use(api)
+    // Setup new server instance
+    if (server.ssl) {
+      const https = require('https') // eslint-disable-line global-require
+      app = https.createServer(server.ssl, app)
+    }
+    // Start the server
+    const instance = app.listen(setup.port, setup.host, null, () => {
+      server.running = server.ssl ? app : instance
+      server.running.on('close', () => {
         // eslint-disable-next-line no-console
-        console.log(`Server listening on ${setup.protocol}://${setup.host}:${setup.port}`)
-        cb()
+        console.log('Server stopped.')
       })
+      // eslint-disable-next-line no-console
+      console.log(`Server listening on ${setup.protocol}://${setup.host}:${setup.port}`)
+      cb()
     })
-  },
+  }),
 
   // stop server
   stop: () => {
@@ -79,12 +77,10 @@ const server = {
   },
 
   // restart server
-  restart: () => {
-    return new Promise(cb => {
-      server.stop()
-      server.start().then(cb)
-    })
-  },
+  restart: () => new Promise((cb) => {
+    server.stop()
+    server.start().then(cb)
+  }),
 }
 
 
@@ -95,7 +91,7 @@ server.init({
   protocol: process.env.PROTOCOL || production ? 'https' : 'http',
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || 1974,
-  logging: production ? 'combined' : 'dev'
+  logging: production ? 'combined' : 'dev',
 })
 
 export default server
