@@ -1,5 +1,5 @@
 import should from 'should'
-import shouldHttp from 'should-http'
+import 'should-http'
 import request from 'request'
 
 import server from '../../src/server'

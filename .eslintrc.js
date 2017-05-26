@@ -8,8 +8,10 @@ module.exports = {
     'linebreak-style': [ 'error', 'unix' ],
     'quotes': [ 'error', 'single' ],
     'semi': [ 'warn', 'never' ],
+    'spaced-comment': 'warn',
     'no-unused-vars': [ 'warn' ],
     'no-console': [ process.env.NODE_ENV === 'production' ? 'error' : 'warn' ],
-    'no-shadow': ['error', { 'allow': ['cb', 'err'] }]
+    'no-shadow': ['error', { 'allow': ['cb', 'err'] }],
+    'import/prefer-default-export': 'warn'
   }
 };
