@@ -44,7 +44,9 @@
     "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "@mocha/eslint-config-mocha": "^0.0.0",
+    "eslint-config-mocha": "^0.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-node": "^4.2.2",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
