@@ -2,21 +2,20 @@
 
 [![GitHub watchers](
   https://img.shields.io/github/watchers/alinex/node-rest.svg?style=social&label=Watch&maxAge=86400)](
-  https://github.com/alinex/node-rest/subscription)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-rest/subscription)
 [![GitHub stars](
   https://img.shields.io/github/stars/alinex/node-rest.svg?style=social&label=Star&maxAge=86400)](
   https://github.com/alinex/node-rest)
 [![GitHub forks](
   https://img.shields.io/github/forks/alinex/node-rest.svg?style=social&label=Fork&maxAge=86400)](
-  https://github.com/alinex/node-rest)<!-- {.hidden-small} -->
-<!-- {p:.right} -->
+  https://github.com/alinex/node-rest)
 
 [![npm package](
   https://img.shields.io/npm/v/alinex-rest.svg?maxAge=86400&label=latest%20version)](
   https://www.npmjs.com/package/alinex-rest)
 [![latest version](
   https://img.shields.io/npm/l/alinex-rest.svg?maxAge=86400)](
-  #license)<!-- {.hidden-small} -->
+  #license)
 [![Codacy Badge](
   https://api.codacy.com/project/badge/Grade/d1c36b200a8b47ffb31a1eabd2522d9e)](
   https://www.codacy.com/app/alinex/node-rest/dashboard)
@@ -31,7 +30,7 @@
   https://gemnasium.com/alinex/node-rest)
 [![GitHub issues](
   https://img.shields.io/github/issues/alinex/node-rest.svg?maxAge=86400)](
-  https://github.com/alinex/node-rest/issues)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-rest/issues)
 
 __Current State: Basic REST server working - code structure not final.__
 
