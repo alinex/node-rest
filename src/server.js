@@ -5,7 +5,6 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import chalk from 'chalk'
-import mongoose from 'mongoose'
 
 import api from './api'
 
@@ -14,9 +13,6 @@ const production = process.env.NODE_ENV === 'production'
 
 // INITIALIZE ENVIRONMENT
 // -----------------------------------------------------------------------------
-
-mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost:27017/alinex') // connect to our database
 
 
 // DEFINE SERVER MANAGER

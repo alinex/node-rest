@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import util from 'util'
 
-import bear from './bear'
+// import bear from './bear'
 
 const router = Router()
 
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 })
 
 // Add Routes
-router.use('/bears', bear)
+// router.use('/bears', bear)
 // router.use('/access', access)
 
 router.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
