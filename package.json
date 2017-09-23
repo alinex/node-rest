@@ -24,15 +24,16 @@
   "contributors": [],
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "nodemon src/start.js --exec 'yarn lint; babel-node --require babel-polyfill --exec node_modules/.bin/babel-node'",
-    "build": "babel src -d dist --require babel-polyfill",
-    "start": "cross-env NODE_ENV=production node dist/start.js",
-    "precommit": "npm run lint",
-    "prepublish": "npm run build",
-    "unit": "nyc --require babel-core/register --require babel-polyfill mocha test/mocha",
+    "flowinstall": "node_modules/.bin/flow-typed install --overwrite",
+    "dev": "nodemon src/start.js --exec 'npm run lint; babel-node --require babel-polyfill --exec node_modules/.bin/babel-node'",
+    "lint": "./node_modules/.bin/flow && eslint src --ext .js",
     "test": "npm run lint && npm run unit",
+    "unit": "mocha --require babel-core/register --require babel-polyfill test/mocha --recursive -b",
+    "coverage": "nyc --require babel-core/register --require babel-polyfill mocha test/mocha --recursive",
     "test-travis": "nyc --reporter=lcov --require babel-core/register --require babel-polyfill mocha test/mocha",
-    "lint": "eslint src --ext .js"
+    "build": "rm -r dist; babel src -d dist --require babel-polyfill",
+    "start": "cross-env NODE_ENV=production node dist/start.js",
+    "prepublishOnly": "npm run lint -s && npm run build -s"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -41,12 +42,9 @@
     "express": "^4.15.3",
     "express-oauth-server": "^2.0.0-b1",
     "mongoose": "^4.10.2",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
   },
   "devDependencies": {
-    "eslint-config-mocha": "^0.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-node": "^4.2.2",
     "babel-cli": "^6.24.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
@@ -55,19 +53,24 @@
     "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-mocha": "^0.0.0",
+    "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-mocha-only": "^0.0.3",
+    "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.55.0",
+    "flow-typed": "^2.1.5",
+    "marked-man": "^0.2.1",
     "mocha": "^3.4.1",
     "nodemon": "^1.11.0",
-    "nyc": "^10.3.2",
     "request": "^2.81.0",
     "should": "^11.2.1",
     "should-http": "^0.1.1",
-    "yarn": "^0.24.5"
+    "nyc": "^11.2.1"
   },
   "engines": {
     "node": ">=4"
