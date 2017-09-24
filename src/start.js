@@ -1,3 +1,4 @@
+// @flow
 import RestServer from './server'
 
 // start the server

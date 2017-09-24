@@ -12,6 +12,29 @@ import api from './api'
 
 const production = process.env.NODE_ENV === 'production'
 
+type Setup = {
+  port: number,
+  ssl: boolean
+}
+
+class Server {
+  setup: Setup
+  handler: Object
+
+  constructor(setup: Setup) {
+    this.setup = setup
+    console.log('xxx')
+  }
+
+  start(): Promise<void> {
+    const app: Object = express()
+    this.handler = app
+    return Promise.resolve()
+  }
+}
+
+
+export default Server
 
 // INITIALIZE ENVIRONMENT
 // -----------------------------------------------------------------------------
@@ -96,5 +119,3 @@ server.init({
   port: process.env.PORT || 1974,
   logging: production ? 'combined' : 'dev',
 })
-
-export default server
